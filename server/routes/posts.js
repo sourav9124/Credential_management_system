@@ -190,6 +190,7 @@ router.post('/createPassword',(req,res)=>{
           res.json({post:created})
     })
 })
+//routing files 
 
 router.get('/allpost',(req,res)=>{
     Password.find()
