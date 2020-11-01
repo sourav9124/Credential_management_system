@@ -2,10 +2,10 @@ import React,{useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import M from 'materialize-css'
 
-const Createpost=()=>{
+const CreatePassword=()=>{
    const history=useHistory()
-   const [title,setTitle]= useState("")
-   const [body,setBody]= useState("")
+   const [websiteName,setName]= useState("")
+   const [password,setPassword]= useState("")
    const [image,setImage]= useState("")
    const [url,setUrl]=useState("")
 
@@ -16,16 +16,16 @@ const Createpost=()=>{
 
    
 
-  fetch('/createpost',{
+  fetch('/createPassword',{
     method:'post',
     headers:{
       "Content-Type":"application/json",
       "Authorization":"Bearer "+localStorage.getItem('jwt')
    },
     body:JSON.stringify({
-      title,
-      body,
-      pic:url
+      websiteName,
+      password,
+      photo:url
     })
 
   }).then(res=>res.json())
@@ -37,7 +37,7 @@ const Createpost=()=>{
      M.toast({html: data.error,classes:'#d50000 red accent-4'})
     }
     else{
-     M.toast({html: "post created successfully",classes:'#1b5e20 green darken-4'})
+     M.toast({html: "password Saved successfully",classes:'#1b5e20 green darken-4'})
      history.push('/')
 
      
@@ -79,16 +79,16 @@ const Createpost=()=>{
 
         <div className="card card-header">
             <div className="card-container">
-            <h3 className="create">CreatePost</h3>
+            <h3 className="create">CreatePassword</h3>
               <input 
-                value={title}
-                onChange={(e)=>setTitle(e.target.value)}
-               type="text" placeholder="title"/>
+                value={websiteName}
+                onChange={(e)=>setName(e.target.value)}
+               type="text" placeholder="website name"/>
               <input
-                value={body}
-                onChange={(e)=>setBody(e.target.value)}
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
               
-                type="text" placeholder="body"/>
+                type="text" placeholder="password"/>
               <div class="file-field input-field ">
       <div class="btn #1976d2 blue darken-2">
         <span>Upload Image</span>
@@ -105,7 +105,7 @@ const Createpost=()=>{
 
               <button class="btn waves-effect waves-light #1976d2 blue darken-2" type="submit" name="action"
                onClick={()=>postDetails()}
-              >CreatePost
+              >CreatePassword
              
               </button>
 
@@ -116,4 +116,4 @@ const Createpost=()=>{
 
     );
 }
-export default Createpost
+export default CreatePassword

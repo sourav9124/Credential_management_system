@@ -1,23 +1,19 @@
 const mongoose=require('mongoose')
-const {ObjectId}=mongoose.Schema.Types
 
-const Posts=new mongoose.Schema({
+const Password=new mongoose.Schema({
 
-    website_name:{
+    websiteName:{
         type:String,
         required:true
     },
-  pas:{
+    password:{
         type:String,
         required:true
     },
     photo:{
         type:String,
         required:true
-    },
-    postedBy:{
-        type:ObjectId,
-        ref:"Signup"
+
     }
 })
-mongoose.model('Post',Posts)
+mongoose.model("Password",Password)

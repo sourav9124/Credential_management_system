@@ -2,7 +2,7 @@ const express=require('express')
 const app=express()
 const mongoose=require('mongoose')
 const  {MONGOURI}=require('./keys.js')
-const PORT=500
+const PORT=5000
 mongoose.connect(MONGOURI,
     {
       useNewUrlParser:true,
@@ -15,8 +15,9 @@ mongoose.connection.on("error",(err)=>{
     console.log("Error while connecting to the database")
 
 })
-require('./models/posts')
+
 require('./models/users')
+require('./models/password')
 app.use(express.json())
 
 

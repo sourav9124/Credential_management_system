@@ -45,7 +45,7 @@ const Signup=()=>{
     return (
         <div className="card">
           <div className="auth-card headers">
-           <h2>Instagram</h2>
+           <h2>Credential Application</h2>
            <input type="text" className="input-field" placeholder="name"
              value={name}
              onChange={(e)=>{setName(e.target.value)}}

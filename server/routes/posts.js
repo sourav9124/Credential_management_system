@@ -1,8 +1,9 @@
 const express=require('express')
 const  mongoose  = require('mongoose')
 const router=express.Router()
-const Post=mongoose.model("Post")
+
 const Signup=mongoose.model('Signup')
+const Password= mongoose.model('Password')
 const bcryptjs=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const {JWT_SECRET}=require('../keys')
@@ -170,18 +171,18 @@ router.get('/protected',requireLogin,(req,res)=>{
     
 })
 
-router.post('/createpost',requireLogin,(req,res)=>{
-    const {title,body,pic}=req.body
-    console.log(title+body+pic);
-     if(!title || !body || !pic)
+router.post('/createPassword',(req,res)=>{
+    const {websiteName,password,photo}=req.body
+    console.log(websiteName+password+photo);
+     if(!websiteName || !password || !photo)
      {
          return res.status(401).json({error:'Please fill all the fields !'})
      }
-    const post=new Post({                             
-        title,
-        body,
-        photo:pic,
-        postedBy:req.user
+    const post=new Password({                             
+        websiteName,
+        password,
+        photo,
+        
     })
     post.save()
     .then(created=>{
@@ -190,11 +191,12 @@ router.post('/createpost',requireLogin,(req,res)=>{
     })
 })
 
-router.get('/allpost',requireLogin,(req,res)=>{
-    Post.find()
-    .populate("postedBy","_id name email")
+router.get('/allpost',(req,res)=>{
+    Password.find()
+    
     .then(result=>{
-           res.json({posts:result})
+           res.json({result:result})
+           
     })
 })
 router.get("/getpost",requireLogin,(req,res)=>{

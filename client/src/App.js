@@ -5,7 +5,7 @@ import Home from '../src/screens/Home'
 import Profile from '../src/screens/Profile'
 import Signup from '../src/screens/Signup'
 import Signin from '../src/screens/Signin'
-import CreatePost from '../src/screens/createpost'
+import CreatePassword from './screens/createPassword'
 import './App.css';
 import {reducer,InitialState} from './reducers/userReducers'
 
@@ -51,8 +51,8 @@ const Routing = ()=>{
             
         </Route>
 
-        <Route exact path="/createpost">
-            <CreatePost />
+        <Route exact path="/createPassword">
+            <CreatePassword />
         </Route>
 
        

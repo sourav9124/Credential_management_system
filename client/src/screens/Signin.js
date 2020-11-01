@@ -63,7 +63,7 @@ const Signin=()=>{
     return (
         <div className="card">
           <div className="auth-card headers">
-           <h2>Instagram</h2>
+           <h2>Credential Management</h2>    
           
             <input
              value={email}
